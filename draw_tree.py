@@ -8,7 +8,31 @@ starty=-250
 branch1=Branch((startx,starty),(startx,starty+length))
 turtle.hideturtle()
 
+"""
+turtle.penup()
+turtle.goto(branch1.start)
+turtle.pendown()
+turtle.goto(branch1.stop)
+
+my_branches = branch1.split()
+
+for b in my_branches:
+    turtle.penup()
+    turtle.goto(b.start)
+    turtle.pendown()
+    turtle.goto(b.stop)
+"""
+
 def draw_tree( this_branch, branch_num ):
+    if max_depth > branch_num :
+        turtle.penup()
+        turtle.goto(this_branch.start)
+        turtle.pendown()
+        turtle.goto(this_branch.stop)
+        my_branches = this_branch.split()
+        for b in my_branches:
+            draw_tree(b,branch_num+1)
+
     '''
     Draw a branch in the tree; then, split the branch and
     recursively call draw_tree again.
